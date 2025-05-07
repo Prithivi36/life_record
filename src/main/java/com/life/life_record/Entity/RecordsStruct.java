@@ -14,10 +14,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Record {
+public class RecordsStruct {
     @Id
     private String _id;
-    private String userId;
     private String title;
     private boolean followUp;
     private String followUpDate;
