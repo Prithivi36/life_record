@@ -12,4 +12,5 @@ import lombok.Setter;
 public class Doctor {
     private String name;
     private String date;
+    private String hospital;
 }

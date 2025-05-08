@@ -25,7 +25,10 @@ public class UserDataController {
     public UserData getUser(@PathVariable String id) {
         return userDataService.getUser(id);
     }
-
+    @PatchMapping("/{id}/hosp/{hid}")
+    public String makeD(@PathVariable String id,@PathVariable String hid){
+        return userDataService.makeDoc(id, hid);
+    }
     @PutMapping("/{id}")
     public String updateUser(@PathVariable String id, @RequestBody UserData userData) {
         return userDataService.updateUser(id, userData);

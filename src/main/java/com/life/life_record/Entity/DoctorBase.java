@@ -16,5 +16,6 @@ public class DoctorBase {
     @Id
     private String _id;
     private String name;
+    private String hospital;
     private String date;
 }

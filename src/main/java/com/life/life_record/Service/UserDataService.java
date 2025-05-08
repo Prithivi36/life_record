@@ -16,4 +16,5 @@ public interface UserDataService {
     List<Record> followup(String id);
     List<Record> completed(String id);
     String findBymail(String email);
+    String makeDoc(String id,String hosp);
 }

@@ -1,21 +1,25 @@
 package com.life.life_record.Service.Impl;
 
+import com.life.life_record.Entity.DoctorBase;
 import com.life.life_record.Entity.Emergency;
 import com.life.life_record.Entity.UserData;
 import com.life.life_record.Entity.Record;
+import com.life.life_record.Repository.DoctorRepo;
 import com.life.life_record.Repository.UserDataRepo;
 import com.life.life_record.Service.UserDataService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class UserDataServiceImpl implements UserDataService {
 
-    @Autowired
     private UserDataRepo userDataRepo;
+    private DoctorRepo doctorRepo;
 
     @Override
     public String saveUser(UserData usrD) {
@@ -95,5 +99,20 @@ public class UserDataServiceImpl implements UserDataService {
     public String findBymail(String email) {
         UserData user = userDataRepo.findByEmail(email);
         return user.get_id();
+    }
+    public String makeDoc(String id,String hosp) {
+        UserData user = getUser(id);
+        if (user != null && user.getRecord() != null) {
+            user.setDoc(true);
+            userDataRepo.save(user);
+            DoctorBase db = new DoctorBase();
+            db.set_id(user.get_id());
+            db.setName(user.getName());
+            db.setHospital(hosp);
+
+            doctorRepo.save(db);
+            return "Doc made";
+        }
+        return "Doc not found";
     }
 } 

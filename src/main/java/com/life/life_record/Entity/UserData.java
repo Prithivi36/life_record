@@ -21,6 +21,7 @@ public class UserData {
     private String adhr;
     private String blood;
     private String dob;
+    private boolean doc;
     private String email;
     private Emergency emergency;
     private String name;
